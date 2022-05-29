@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: battleship
+
+jwt:
+  secret: x7rSODPetP3J9Sdg2wbM8SnZdEzdmNQV
