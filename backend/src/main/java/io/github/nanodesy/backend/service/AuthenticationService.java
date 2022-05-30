@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
+import java.time.Instant;
 import java.util.Date;
 
 @Service
@@ -34,13 +35,15 @@ public class AuthenticationService {
     }
 
     public String generateJWTToken(User user) {
+        Instant now = timeUtils.now();
         try {
             return JWT.create()
                     .withSubject(SUBJECT)
                     .withClaim("firstName", user.getFirstName())
                     .withClaim("lastName", user.getLastName())
                     .withClaim("email", user.getEmail())
-                    .withIssuedAt(Date.from(timeUtils.now()))
+                    .withIssuedAt(Date.from(now))
+                    .withExpiresAt(Date.from(now.plusSeconds(3600)))
                     .withIssuer(applicationName)
                     .sign(Algorithm.HMAC512(jwtSecret));
         } catch (UnsupportedEncodingException e) {
