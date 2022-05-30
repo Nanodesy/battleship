@@ -20,4 +20,9 @@ public class AuthenticationController {
     public String signUp(@RequestBody User user) {
         return authenticationService.generateJWTToken(userDetailsService.create(user));
     }
+
+    @PostMapping("/sign-in")
+    public String signIn(@RequestBody User user) {
+        return authenticationService.generateJWTToken((User) userDetailsService.loadUserByUsername(user.getUsername()));
+    }
 }
