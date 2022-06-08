@@ -8,6 +8,7 @@ import Login from "./pages/auth/login/Login";
 import Register from "./pages/auth/register/Register";
 import {Provider} from "react-redux";
 import {persist, store} from "./store";
+import Profile from "./pages/profile/Profile";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                                 <Route path="/auth/login" element={<Login/>}/>
                                 <Route path="/auth/register" element={<Register/>}/>
                             </Route>
+                            <Route path="/profile" element={<Profile/>}/>
                             <Route path="*" element={<NotFound/>}/>
                         </Routes>
                     </Layout>

@@ -22,6 +22,9 @@ const Header = () => {
                     <Typography variant="h6" component="div" sx={{flexGrow: 1, userSelect: "none"}}>
                         Battleship
                     </Typography>
+                    <IconButton component={Link} to="/profile">
+                        <LogoDevIcon></LogoDevIcon>
+                    </IconButton>
                     { useSelector(isLoggedIn) ? <Typography>{username}</Typography> : undefined}
                     { useSelector(isLoggedIn) ? Logout : Login }
                 </Toolbar>
